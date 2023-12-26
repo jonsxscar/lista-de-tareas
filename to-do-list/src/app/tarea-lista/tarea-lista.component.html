@@ -1,1 +1,12 @@
 <p>tarea-lista works!</p>
+<div *ngFor="let tarea of tareas; let i = index">
+  <input
+    type="checkbox"
+    [checked]="tarea.completada"
+    (change)="tarea.completada = !tarea.completada"
+  />
+  {{ tarea.nombre }}
+  <button (click)="eliminarTarea(i)">Eliminar</button>
+</div>
+<input [(ngModel)]="nuevaTarea" placeholder="Nueva tarea" />
+<button (click)="agregarTarea()">Agregar tarea</button>
