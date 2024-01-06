@@ -1,10 +1,14 @@
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
 from .models import Task
 from django.forms.models import model_to_dict
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 # Create your views here.
 
+@method_decorator(csrf_exempt, name='dispatch')
 class TaskView(View):
     def get(self, request):
         try:
@@ -15,16 +19,16 @@ class TaskView(View):
 
     def post(self, request):
         try:
-            data = request.POST
+            data = json.loads(request.body)
             task = Task.objects.create(
                 title=data.get('title'),
                 description=data.get('description'),
-                completed=data.get('completed') == 'true'
+                completed=data.get('completed')
             )
             return JsonResponse(model_to_dict(task), status=201)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
-
+        
     def put(self, request, id):
         try:
             data = request.POST

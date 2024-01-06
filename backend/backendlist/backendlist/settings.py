@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j6dl5491!%7nff4@2vrs0demyzv!3ue=%qgwqxjc=rd23$n99e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,3 +122,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CSRF settings
+""" CSRF_USE_SESSIONS = False
+CSRF_COOKIE_SECURE = False  # Solo para desarrollo, no recomendado para producción """
