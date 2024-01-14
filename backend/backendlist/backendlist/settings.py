@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'listtodo',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backendlist.urls'
@@ -123,6 +125,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CSRF settings
-""" CSRF_USE_SESSIONS = False
-CSRF_COOKIE_SECURE = False  # Solo para desarrollo, no recomendado para producción """
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # Agrega aquí la URL de tu frontend
+]

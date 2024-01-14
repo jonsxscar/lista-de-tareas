@@ -1,11 +1,14 @@
 <div *ngFor="let tarea of tareas; let i = index">
   <input
     type="checkbox"
-    [checked]="tarea.completada"
-    (change)="tarea.completada = !tarea.completada"
+    [checked]="tarea.completed"
+    (change)="tarea.completed = !tarea.completed"
   />
-  {{ tarea.nombre }}
+  <p>{{ tarea.title }}</p>
+  <p>{{ tarea.description }}</p>
   <button (click)="eliminarTarea(i)">Eliminar</button>
 </div>
-<input [(ngModel)]="nuevaTarea" placeholder="Nueva tarea" />
+
+<input [value]="nuevaTarea.title || ''" (input)="updateNuevaTarea('title', $event)" placeholder="Título de la nueva tarea" />
+<input [value]="nuevaTarea.description || ''" (input)="updateNuevaTarea('description', $event)" placeholder="Descripción de la nueva tarea" />
 <button (click)="agregarTarea()">Agregar tarea</button>

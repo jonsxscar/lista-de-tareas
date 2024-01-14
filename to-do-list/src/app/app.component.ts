@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { TareaListaComponent } from './tarea-lista/tarea-lista.component';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { TareaListaModule } from './list/list.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TareaListaComponent],
+  imports: [CommonModule, HttpClientModule, RouterOutlet, TareaListaModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
