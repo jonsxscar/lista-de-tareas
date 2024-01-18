@@ -1,0 +1,81 @@
+/* Estilos para los inputs y el botón dentro del div con la clase 'agg' */
+.agg input {
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px; /* Espacio interior alrededor del texto */
+  margin-bottom: 30px; /* Espacio exterior arriba y abajo del input */
+}
+
+.agg button {
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espacio interior alrededor del texto */
+  margin-top: 10px; /* Espacio exterior arriba del botón */
+}
+
+/* Estilos para el div con la clase 'edit' */
+.edit {
+    color: black;
+    position: fixed; /* Posicionamiento fijo respecto a la ventana del navegador */
+    top: 50%; /* Centrado verticalmente */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste para centrar exactamente en el medio */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    padding: 20px; /* Espacio interior alrededor del contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    z-index: 1000; /* Asegura que el div esté por encima de otros elementos */
+  }
+  
+  /* Estilos para el h1, los inputs y el botón dentro del div con la clase 'edit' */
+.edit h1 {
+    text-align: center; /* Centrar el texto del h1 */
+  }
+  
+  .edit input {
+    display: block; /* Hacer que los inputs ocupen toda la línea */
+    margin: 10px auto; /* Centrar los inputs horizontalmente y agregar espacio arriba y abajo */
+  }
+  
+  .edit button {
+    display: block; /* Hacer que el botón ocupe toda la línea */
+    margin: 20px auto; /* Centrar el botón horizontalmente y agregar espacio arriba y abajo */
+  }
+  
+/* Contenedor para las tarjetas */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+
+/* Cada tarea es una tarjeta */
+.tareas {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .divtitle {
+    background-color: #df6b7e;
+  }
+  .divtitle h2{
+    text-align: center;
+  }
+  
+  .divdescription {
+    background-color: #808080;
+    padding: 50px 0px;
+  }
+  
+  .delete {
+    background-color: #FF6961;
+    color: white;
+  }
+  
+  .editB {
+    background-color: #98FB98;
+    color: black;
+  }
+  

@@ -1,24 +1,41 @@
-<input [value]="nuevaTarea.title || ''" (input)="updateNuevaTarea('title', $event)" placeholder="Título de la nueva tarea" />
-<input [value]="nuevaTarea.description || ''" (input)="updateNuevaTarea('description', $event)" placeholder="Descripción de la nueva tarea" />
-<button (click)="agregarTarea()">Agregar tarea</button>
+<div class="agg">
+  <input
+    [value]="nuevaTarea.title || ''"
+    (input)="updateNuevaTarea('title', $event)"
+    placeholder="Título de la nueva tarea"
+  />
+  <input
+    [value]="nuevaTarea.description || ''"
+    (input)="updateNuevaTarea('description', $event)"
+    placeholder="Descripción de la nueva tarea"
+  />
+  <button (click)="agregarTarea()">Agregar tarea</button>
+</div>
 
-<div *ngIf="tareaEditando">
+<div *ngIf="tareaEditando" class="edit">
+  <h1>Editando tarea</h1>
   <input [(ngModel)]="tareaEditando.title" placeholder="Título de la tarea" />
-  <input [(ngModel)]="tareaEditando.description" placeholder="Descripción de la tarea" />
+  <input
+    [(ngModel)]="tareaEditando.description"
+    placeholder="Descripción de la tarea"
+  />
   <button (click)="actualizarTareaEditada()">Guardar</button>
 </div>
 
-<div *ngFor="let tarea of tareas; let i = index">
-  <input
-    type="checkbox"
-    [checked]="tarea.completed"
-    (change)="tarea.completed = !tarea.completed"
-  />
-  <p>{{ tarea.title }}</p>
-  <p>{{ tarea.description }}</p>
-  <button (click)="eliminarTarea(i)">Eliminar</button>
-  <button (click)="editarTarea(i)">Editar</button>
+<div class="container">
+  <div *ngFor="let tarea of tareas; let i = index" class="tareas">
+    <input
+      type="checkbox"
+      [checked]="tarea.completed"
+      (change)="tarea.completed = !tarea.completed"
+    />
+    <div class="divtitle">
+      <h2>{{ tarea.title }}</h2>
+    </div>
+    <div class="divdescription">
+      <p>{{ tarea.description }}</p>
+    </div>
+    <button class="editB" (click)="editarTarea(i)">Editar</button>
+    <button class="delete" (click)="eliminarTarea(i)">Eliminar</button>
+  </div>
 </div>
-
-
-

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #333; /* Fondo oscuro */
+    color: white; /* Letras blancas */
+    display: flex;
+    justify-content: center; /* Centrar todo */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+  }
