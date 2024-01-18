@@ -42,11 +42,18 @@ export class TareaListaComponent {
 
   eliminarTarea(index: number) {
     const tarea = this.tareas[index];
-    this.http.delete(`http://127.0.0.1:8000/api/tasks/${tarea?.id}`).subscribe(res => {
-      // Eliminar la tarea de la lista de tareas
-      this.tareas.splice(index, 1);
-    });
-  }
+    this.http.delete(`http://127.0.0.1:8000/api/tasks/${tarea?.id}`).subscribe(
+      res => {
+        // Eliminar la tarea de la lista de tareas
+        this.tareas.splice(index, 1);
+      },
+      err => {
+        // Manejo de errores
+        console.error('Hubo un error al eliminar la tarea:', err);
+      }
+    );
+}
+
 
   updateNuevaTarea(field: keyof Tarea, event: Event) {
     if (this.nuevaTarea) {

@@ -6,7 +6,6 @@ from .models import Task
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-# Create your views here.
 
 @method_decorator(csrf_exempt, name='dispatch')
 class TaskView(View):
@@ -31,7 +30,7 @@ class TaskView(View):
         
     def put(self, request, id):
         try:
-            data = request.POST
+            data = json.loads(request.body)
             Task.objects.filter(id=id).update(
                 title=data.get('title'),
                 description=data.get('description'),
@@ -44,7 +43,46 @@ class TaskView(View):
 
     def delete(self, request, id):
         try:
-            Task.objects.get(id=id).delete()
+            task = Task.objects.get(id=id)
+        except Task.DoesNotExist:
+            return JsonResponse({'error': 'La tarea no existe'}, status=404)
+
+        try:
+            task.delete()
+            return JsonResponse({'id': id})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class TaskDetailView(View):
+    def get(self, request, id):
+        try:
+            task = Task.objects.get(id=id)
+            return JsonResponse(model_to_dict(task), safe=False)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    def put(self, request, id):
+        try:
+            data = json.loads(request.body)
+            Task.objects.filter(id=id).update(
+                title=data.get('title'),
+                description=data.get('description'),
+                completed=data.get('completed') == 'true'
+            )
+            task = Task.objects.get(id=id)
+            return JsonResponse(model_to_dict(task))
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    def delete(self, request, id):
+        try:
+            task = Task.objects.get(id=id)
+        except Task.DoesNotExist:
+            return JsonResponse({'error': 'La tarea no existe'}, status=404)
+
+        try:
+            task.delete()
             return JsonResponse({'id': id})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
