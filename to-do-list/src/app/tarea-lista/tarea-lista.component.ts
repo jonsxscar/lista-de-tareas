@@ -18,6 +18,8 @@ interface Tarea {
 export class TareaListaComponent {
   tareas: Tarea[] = [];
   nuevaTarea: Tarea = { id: 0, title: '', description: '', completed: false, date: '' };
+  tareaEditando: Tarea | null = null;
+
 
   constructor(private http: HttpClient) {
     this.getTareas();
@@ -54,6 +56,40 @@ export class TareaListaComponent {
     );
 }
 
+actualizarTarea(index: number) {
+  const tarea = this.tareas[index];
+  this.http.put<Tarea>(`http://127.0.0.1:8000/api/tasks/${tarea?.id}`, tarea).subscribe(
+  (res: any) => {
+    // Actualizar la tarea en la lista de tareas
+    this.tareas[index] = res as Tarea;
+  },
+  err => {
+    // Manejo de errores
+    console.error('Hubo un error al actualizar la tarea:', err);
+  }
+);
+}
+
+  editarTarea(index: number) {
+    this.tareaEditando = { ...this.tareas[index] };
+}
+
+  actualizarTareaEditada() {
+    if (this.tareaEditando) {
+      this.http.put<Tarea>(`http://127.0.0.1:8000/api/tasks/${this.tareaEditando.id}`, this.tareaEditando).subscribe(
+        (res: any) => {
+          const index = this.tareas.findIndex(tarea => tarea.id === this.tareaEditando?.id);
+          if (index !== -1) {
+            this.tareas[index] = res as Tarea;
+          }
+          this.tareaEditando = null;
+        },
+        err => {
+          console.error('Hubo un error al actualizar la tarea:', err);
+        }
+      );
+    }
+  }
 
   updateNuevaTarea(field: keyof Tarea, event: Event) {
     if (this.nuevaTarea) {

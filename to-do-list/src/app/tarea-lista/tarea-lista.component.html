@@ -1,3 +1,13 @@
+<input [value]="nuevaTarea.title || ''" (input)="updateNuevaTarea('title', $event)" placeholder="Título de la nueva tarea" />
+<input [value]="nuevaTarea.description || ''" (input)="updateNuevaTarea('description', $event)" placeholder="Descripción de la nueva tarea" />
+<button (click)="agregarTarea()">Agregar tarea</button>
+
+<div *ngIf="tareaEditando">
+  <input [(ngModel)]="tareaEditando.title" placeholder="Título de la tarea" />
+  <input [(ngModel)]="tareaEditando.description" placeholder="Descripción de la tarea" />
+  <button (click)="actualizarTareaEditada()">Guardar</button>
+</div>
+
 <div *ngFor="let tarea of tareas; let i = index">
   <input
     type="checkbox"
@@ -7,8 +17,8 @@
   <p>{{ tarea.title }}</p>
   <p>{{ tarea.description }}</p>
   <button (click)="eliminarTarea(i)">Eliminar</button>
+  <button (click)="editarTarea(i)">Editar</button>
 </div>
 
-<input [value]="nuevaTarea.title || ''" (input)="updateNuevaTarea('title', $event)" placeholder="Título de la nueva tarea" />
-<input [value]="nuevaTarea.description || ''" (input)="updateNuevaTarea('description', $event)" placeholder="Descripción de la nueva tarea" />
-<button (click)="agregarTarea()">Agregar tarea</button>
+
+
