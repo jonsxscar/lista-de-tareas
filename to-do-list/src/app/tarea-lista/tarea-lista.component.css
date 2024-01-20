@@ -68,15 +68,18 @@
     box-shadow: 0 0 10px rgba(211, 196, 196, 0.911);
     width: 180px; /* Ancho fijo */
     height: 300px; /* Alto fijo */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .tareas:hover {
+    transform: scale(1.05); /* Aplicamos un ligero zoom al pasar el mouse */
   }
   
   .divtitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     background-color: #df6b7e;
     word-wrap: break-word;
-    height: 100px;
+    height: 80px;
   }
   .divtitle h2{
     margin: 0;
@@ -84,7 +87,7 @@
   }
   
   .divdescription {
-     background: linear-gradient(#4b4b4b, #333333);
+    background: linear-gradient(#4b4b4b, #333333);
     text-align: center;
     padding: 50px 0px;
     word-wrap: break-word;

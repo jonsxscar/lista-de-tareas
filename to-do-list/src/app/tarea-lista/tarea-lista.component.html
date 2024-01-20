@@ -3,21 +3,30 @@
     [value]="nuevaTarea.title || ''"
     (input)="updateNuevaTarea('title', $event)"
     placeholder="Título de la nueva tarea"
+    maxlength="20"
+    required
   />
   <input
     [value]="nuevaTarea.description || ''"
     (input)="updateNuevaTarea('description', $event)"
     placeholder="Descripción de la nueva tarea"
+    maxlength="200"
   />
   <button (click)="agregarTarea()">Agregar tarea</button>
 </div>
 
 <div *ngIf="tareaEditando" class="edit">
   <h1>Editando tarea</h1>
-  <input [(ngModel)]="tareaEditando.title" placeholder="Título de la tarea" />
+  <input 
+  [(ngModel)]="tareaEditando.title" 
+  placeholder="Título de la tarea" 
+  maxlength="20" 
+  required
+  />
   <input
     [(ngModel)]="tareaEditando.description"
     placeholder="Descripción de la tarea"
+    maxlength="200"
   />
   <button (click)="actualizarTareaEditada()">Guardar</button>
 </div>
