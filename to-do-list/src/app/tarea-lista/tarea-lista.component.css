@@ -1,14 +1,25 @@
 /* Estilos para los inputs y el botón dentro del div con la clase 'agg' */
+.agg{
+  display: flex;
+  justify-content: center;
+}
+
 .agg input {
   border-radius: 10px; /* Bordes redondeados */
   padding: 10px; /* Espacio interior alrededor del texto */
   margin-bottom: 30px; /* Espacio exterior arriba y abajo del input */
+  height: 1em;
+  background-color: black;
+  color: #a7a7a7;
 }
 
 .agg button {
   border-radius: 20px; /* Bordes redondeados */
   padding: 10px 20px; /* Espacio interior alrededor del texto */
-  margin-top: 10px; /* Espacio exterior arriba del botón */
+  margin-top: 0px; /* Espacio exterior arriba del botón */
+  height: 3em;
+  background-color: #df6b7e;
+  color: white;
 }
 
 /* Estilos para el div con la clase 'edit' */
@@ -54,28 +65,67 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(211, 196, 196, 0.911);
+    width: 180px; /* Ancho fijo */
+    height: 300px; /* Alto fijo */
   }
   
   .divtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #df6b7e;
+    word-wrap: break-word;
+    height: 100px;
   }
   .divtitle h2{
+    margin: 0;
     text-align: center;
   }
   
   .divdescription {
-    background-color: #808080;
+    background-color: #4b4b4b;
+    text-align: center;
     padding: 50px 0px;
+    word-wrap: break-word;
+    height: 100px;
+    overflow: auto;
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  .divdescription::-webkit-scrollbar-track {
+    background: #dddddd; /* Fondo gris para la pista de la barra de desplazamiento */
+    border-radius: 5px;
+  }
+
+  .divdescription::-webkit-scrollbar-thumb {
+    background: #333333; /* Barra de desplazamiento de color #333333 */
+    border-radius: 5px; /* Bordes redondeados */
   }
   
+  .botons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .delete {
     background-color: #FF6961;
     color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 0px 0px 10px 10px;
+    width: 5em;
+    box-shadow: 0 5px 10px rgba(211, 196, 196, 0.911);
   }
   
   .editB {
-    background-color: #98FB98;
-    color: black;
+    background-color: #327232;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 0px 0px 10px 10px;
+    width: 5em;
+    box-shadow: 0 5px 10px rgba(211, 196, 196, 0.911);
   }
   
