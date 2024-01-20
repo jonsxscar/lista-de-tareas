@@ -91,6 +91,25 @@ actualizarTarea(index: number) {
     }
   }
 
+  cambiarEstadoTarea(index: number) {
+    const tarea = this.tareas[index];
+    tarea.completed = !tarea.completed;
+    console.log('Estado de tarea cambiado:', tarea.completed); // Agregar esta línea
+    this.http.put<Tarea>(`http://127.0.0.1:8000/api/tasks/${tarea.id}`, tarea).subscribe(
+      (res: any) => {
+        // Actualizar la tarea en la lista de tareas
+        this.tareas[index] = res as Tarea;
+        console.log('Tarea actualizada:', this.tareas[index]); // Agregar esta línea
+      },
+      err => {
+        // Manejo de errores
+        console.error('Hubo un error al actualizar la tarea:', err);
+      }
+    );
+  }
+  
+  
+
   updateNuevaTarea(field: keyof Tarea, event: Event) {
     if (this.nuevaTarea) {
       if (field === 'title' || field === 'description') {
@@ -100,3 +119,4 @@ actualizarTarea(index: number) {
     }
   }
 }
+

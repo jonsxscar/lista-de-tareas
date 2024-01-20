@@ -27,7 +27,7 @@
     <input
       type="checkbox"
       [checked]="tarea.completed"
-      (change)="tarea.completed = !tarea.completed"
+      (change)="cambiarEstadoTarea(i)"
     />
     <div class="divtitle">
       <h2>{{ tarea.title }}</h2>

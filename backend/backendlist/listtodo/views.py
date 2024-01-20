@@ -34,7 +34,7 @@ class TaskView(View):
             Task.objects.filter(id=id).update(
                 title=data.get('title'),
                 description=data.get('description'),
-                completed=data.get('completed') == 'true'
+                completed=data.get('completed')
             )
             task = Task.objects.get(id=id)
             return JsonResponse(model_to_dict(task))
@@ -68,7 +68,7 @@ class TaskDetailView(View):
             Task.objects.filter(id=id).update(
                 title=data.get('title'),
                 description=data.get('description'),
-                completed=data.get('completed') == 'true'
+                completed=data.get('completed') 
             )
             task = Task.objects.get(id=id)
             return JsonResponse(model_to_dict(task))
