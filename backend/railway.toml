@@ -1,2 +1,2 @@
 [start]
-cmd = "gunicorn backendlist.wsgi"
+cmd = "gunicorn backend.backendlist.backendlist.wsgi"
