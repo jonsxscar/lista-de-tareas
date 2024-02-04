@@ -1,1 +1,1 @@
-web: gunicorn 'backend.backendlist.backendlist.wsgi'
+web: gunicorn 'backendlist.wsgi'
